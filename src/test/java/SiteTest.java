@@ -45,10 +45,18 @@ class SiteTest {
         stepSignUp.execFillInEmail("123@123.ru");
         stepSignUp.execFillInPwd("123456");
         stepSignUp.execClickNext();
+
+        stepSignUp.execFillInName("vasy");
+        stepSignUp.execFillInLastName("pupkin");
+        stepSignUp.execFillInBirthday("12/12/2000"); //TODO check how to fill in date
+        stepSignUp.execFillInPassportNumber("1111111");
+        stepSignUp.execFillInPassportFrom("spb");
+        stepSignUp.execFillInPassportWhen("11/11/2001"); //TODO check how to fill in date
+        stepSignUp.execClickNextPersonal();
     }
 
     @AfterAll
     static void tearDown() {
-        driver.quit();
+        //driver.quit();
     }
 }
