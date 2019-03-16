@@ -1,10 +1,10 @@
-
+import common.Env;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import steps.StepLogin;
 import steps.StepSignUp;
 
@@ -18,9 +18,15 @@ class SiteTest {
 
     @BeforeAll
     static void setup() {
-        File file = new File("drivers/geckodriver");
-        System.setProperty("webdriver.gecko.driver", file.getAbsolutePath());
-        driver = new FirefoxDriver();
+        File file;
+        if (Env.BROWSER.equals("firefox")) {
+            file = new File("drivers/geckodriver");
+            System.setProperty("webdriver.gecko.driver", file.getAbsolutePath());
+        } else {
+            file = new File("drivers/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+        }
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
@@ -29,8 +35,8 @@ class SiteTest {
     @DisplayName("Login Test Case")
     void testCase1() {
         StepLogin loginPageSteps = new StepLogin(driver);
-        loginPageSteps.execFillInLogin("123");
-        loginPageSteps.execFillInPwd("123");
+        loginPageSteps.execFillInLogin("ivan_88");
+        loginPageSteps.execFillInPwd("4321");
         loginPageSteps.execClickLogin();
     }
 

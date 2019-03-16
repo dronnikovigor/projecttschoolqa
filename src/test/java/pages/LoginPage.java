@@ -1,5 +1,6 @@
 package pages;
 
+import common.Env;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
     private WebDriver driver;
 
-    private static String PAGE_URL = "http://0.0.0.0:8080/#/login";
+    private static String PAGE_URL = "http://" + Env.HOST + ":8080/#/login";
 
     @FindBy(xpath = "/html/body/app-root/div/div/login/div/div/div/form/div/input[1]")
     private WebElement loginField;

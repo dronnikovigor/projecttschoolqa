@@ -15,6 +15,12 @@
         <junit.platform.version>1.0.0-M4</junit.platform.version>
     </properties>
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -79,4 +85,30 @@
             <version>${allure-junit4.version}</version>
         </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>Browser: Chrome</id>
+            <properties>
+                <env.browser>chrome</env.browser>
+            </properties>
+        </profile>
+        <profile>
+            <id>Browser: Firefox</id>
+            <properties>
+                <env.browser>firefox</env.browser>
+            </properties>
+        </profile>
+        <profile>
+            <id>HOST: localhost</id>
+            <properties>
+                <env.host>localhost</env.host>
+            </properties>
+        </profile>
+        <profile>
+            <id>HOST: 0.0.0.0</id>
+            <properties>
+                <env.host>0.0.0.0</env.host>
+            </properties>
+        </profile>
+    </profiles>
 </project>
