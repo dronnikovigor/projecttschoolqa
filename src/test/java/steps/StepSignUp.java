@@ -17,24 +17,30 @@ public class StepSignUp {
     public void execFillInUsername(String username) {
         signUpPage.fillInUsername(username);
     }
-
     @Step("Fill in Password")
     public void execFillInPwd(String password) {
         signUpPage.fillInPwd(password);
     }
-
     @Step("Fill in Email")
     public void execFillInEmail(String email) {
         signUpPage.fillInEmail(email);
     }
+
     @Step("Click on Next")
     public void execClickNext() {
         signUpPage.clickNextBtn();
     }
-
     @Step("Click on Next in Personal Info")
     public void execClickNextPersonal() {
         signUpPage.clickNextPersonalBtn();
+    }
+    @Step("Click on Next in Address Info")
+    public void execClickNextAddress() {
+        signUpPage.clickNextAddressBtn();
+    }
+    @Step("Click on SignUp")
+    public void execClickSignUp() {
+        signUpPage.clickSignUpBtn();
     }
 
     @Step("Fill in Name")
@@ -64,6 +70,65 @@ public class StepSignUp {
     @Step("Fill in Passport When")
     public void execFillInPassportWhen(String passportWhen) {
         signUpPage.fillInPassportIssuedWhen(passportWhen);
+    }
+
+    @Step("Fill in Address Country")
+    public void execFillInAddressCountry(String addressCountry) {
+        signUpPage.fillInAddressCountry(addressCountry);
+    }
+    @Step("Fill in Address City")
+    public void execFillInAddressCity(String addressCity) {
+        signUpPage.fillInAddressCity(addressCity);
+    }
+    @Step("Fill in Address Street")
+    public void execFillInAddressStreet(String addressStreet) {
+        signUpPage.fillInAddressStreet(addressStreet);
+    }
+    @Step("Fill in Address Zipcode")
+    public void execFillInAddressZipcode(String addressZipcode) {
+        signUpPage.fillInAddressZipcode(addressZipcode);
+    }
+    @Step("Fill in Address House Number")
+    public void execFillInAddressHouseNumber(String addressHouseNumber) {
+        signUpPage.fillInAddressHouseNumber(addressHouseNumber);
+    }
+
+    @Step("Select Tariff")
+    public void execSelectTariff(String tariff) {
+        signUpPage.selectTariff(tariff);
+    }
+
+    @Step("Check Email for valid errors")
+    public boolean execCheckEmailValidErrors() {
+        return signUpPage.checkEmailValidError();
+    }
+    @Step("Check Username for required errors")
+    public boolean execCheckLoginRequiedErrors() {
+        return signUpPage.checkLoginRequiedError();
+    }
+    @Step("Check Username for valid errors")
+    public boolean execCheckLoginValidErrors() {
+        return signUpPage.checkLoginValidError();
+    }
+    @Step("Check Password for required errors")
+    public boolean execCheckPasswordRequiedErrors() {
+        return signUpPage.checkPwdRequiedError();
+    }
+    @Step("Check Password for valid errors")
+    public boolean execCheckPasswordValidErrors() {
+        return signUpPage.checkPwdValidError();
+    }
+    @Step("Check Email for errors")
+    public boolean execCheckEmailErrors() {
+        return signUpPage.checkEmailError();
+    }
+    @Step("Check Fields for empty errors")
+    public boolean execCheckEmptyFieldErrors() {
+        return signUpPage.checkEmptyError();
+    }
+    @Step("Check User exists error")
+    public boolean execCheckUserExistsError() {
+        return signUpPage.checkUserExistsError();
     }
 
 }
