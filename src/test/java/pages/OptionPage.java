@@ -41,6 +41,9 @@ public class OptionPage {
     @FindBy(xpath = "//div[contains(@class, 'alert-item')]")
     private WebElement optionAlert;
 
+    @FindBy(xpath = "//label[contains(@role, 'tooltip')]")
+    private List<WebElement> tooltips;
+
     public OptionPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -94,4 +97,13 @@ public class OptionPage {
     public String getMessageFromAlert() {
         return optionAlert.getText();
     }
+
+    public boolean tooltipContainsError() {
+        return tooltips.stream().anyMatch(webElement -> webElement.getAttribute("class").contains("invalid"));
+    }
+
+    public void randomClick(){
+        nameInput.click();
+    }
+
 }

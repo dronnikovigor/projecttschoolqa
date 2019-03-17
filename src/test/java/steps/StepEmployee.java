@@ -109,4 +109,16 @@ public class StepEmployee {
     public void clickOnOKButtonOption() {
         optionPage.clickOnOKButton();
     }
+
+    @Step("Check all tooltips")
+    public boolean dataInTariffIsIncorrect() {
+        tariffPage.randomClick();
+        return tariffPage.tooltipContainsError();
+    }
+
+    @Step("Check all tooltips")
+    public boolean dataInOptionIsIncorrect() {
+        optionPage.randomClick();
+        return optionPage.tooltipContainsError();
+    }
 }

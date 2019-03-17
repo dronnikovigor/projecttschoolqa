@@ -15,9 +15,11 @@ public class OptionTest extends TestBase {
         stepEmployee.clickOnOptionCreationButton();
         Option option = new Option("top option", "super", "100", "meeee");
         stepEmployee.fillOption(option);
+        Assert.assertTrue(stepEmployee.dataInTariffIsIncorrect());
         Assert.assertFalse(stepEmployee.addOptionButtonIsEnabled());
         Option option1 = new Option("top option", "super", "100", "100");
         stepEmployee.fillOption(option1);
+        Assert.assertFalse(stepEmployee.dataInTariffIsIncorrect());
         Assert.assertTrue(stepEmployee.addOptionButtonIsEnabled());
         stepEmployee.addOption();
         Assert.assertTrue(stepEmployee.optionMessageWasShowed("Option have successfully added."));

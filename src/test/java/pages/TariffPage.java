@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -47,6 +48,9 @@ public class TariffPage {
 
     @FindBy(xpath = "//div[contains(@class, 'alert-item')]")
     private WebElement tariffAlert;
+
+    @FindBy(xpath = "//label[contains(@role, 'tooltip')]")
+    private List<WebElement> tooltips;
 
     public TariffPage(WebDriver driver) {
         this.driver = driver;
@@ -112,5 +116,13 @@ public class TariffPage {
 
     public String getMessageFromAlert() {
         return tariffAlert.getText();
+    }
+
+    public boolean tooltipContainsError() {
+        return tooltips.stream().anyMatch(webElement -> webElement.getAttribute("class").contains("invalid"));
+    }
+
+    public void randomClick(){
+        nameInput.click();
     }
 }
