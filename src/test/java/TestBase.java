@@ -40,4 +40,10 @@ public class TestBase {
         driver.quit();
     }
 
+    public void login() {
+        StepLogin loginPageSteps = new StepLogin(getDriver());
+        loginPageSteps.execFillInLogin("ivan_88");
+        loginPageSteps.execFillInPwd("4321");
+        loginPageSteps.execClickLogin();
+    }
 }
