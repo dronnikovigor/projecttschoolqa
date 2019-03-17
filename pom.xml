@@ -87,27 +87,21 @@
     </dependencies>
     <profiles>
         <profile>
-            <id>Browser: Chrome</id>
+            <id>OS: Windows</id>
             <properties>
-                <env.browser>chrome</env.browser>
+                <env.os>windows</env.os>
             </properties>
         </profile>
         <profile>
-            <id>Browser: Firefox</id>
+            <id>OS: Linux</id>
             <properties>
-                <env.browser>firefox</env.browser>
+                <env.os>linux</env.os>
             </properties>
         </profile>
         <profile>
             <id>HOST: localhost</id>
             <properties>
                 <env.host>localhost</env.host>
-            </properties>
-        </profile>
-        <profile>
-            <id>HOST: 0.0.0.0</id>
-            <properties>
-                <env.host>0.0.0.0</env.host>
             </properties>
         </profile>
     </profiles>

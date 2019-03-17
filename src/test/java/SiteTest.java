@@ -1,8 +1,5 @@
 import common.Env;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import steps.StepLogin;
@@ -16,14 +13,14 @@ import java.util.concurrent.TimeUnit;
 class SiteTest {
     private static WebDriver driver;
 
-    @BeforeAll
-    static void setup() {
+    @BeforeEach
+    void setup() {
         File file;
-        if (Env.BROWSER.equals("firefox")) {
-            file = new File("drivers/geckodriver");
-            System.setProperty("webdriver.gecko.driver", file.getAbsolutePath());
-        } else {
+        if (Env.OS.equals("windows")) {
             file = new File("drivers/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+        } else {
+            file = new File("drivers/chromedriver");
             System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
         }
         driver = new ChromeDriver();
@@ -61,8 +58,8 @@ class SiteTest {
         stepSignUp.execClickNextPersonal();
     }
 
-    @AfterAll
-    static void tearDown() {
-        //driver.quit();
+    @AfterEach
+    void tearDown() {
+        driver.quit();
     }
 }
