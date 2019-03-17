@@ -38,6 +38,9 @@ public class OptionPage {
     @FindBy(xpath = "//clr-stack-label[@class='customers']")
     private List<WebElement> options;
 
+    @FindBy(xpath = "//div[contains(@class, 'alert-item')]")
+    private WebElement optionAlert;
+
     public OptionPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -86,5 +89,9 @@ public class OptionPage {
 
     public void clickOnOKButton() {
         buttonOK.click();
+    }
+
+    public String getMessageFromAlert() {
+        return optionAlert.getText();
     }
 }

@@ -23,6 +23,7 @@ public class TariffTest extends TestBase {
         stepEmployee.fillTariff(tariff1);
         Assert.assertTrue(stepEmployee.addTariffButtonIsEnabled());
         stepEmployee.addTariff();
+        Assert.assertTrue(stepEmployee.tariffMessageWasShowed("Tariff have successfully added."));
         stepEmployee.clickOnOKButtonTariff();
         Assert.assertTrue(stepEmployee.tariffHasCreated(tariff.getName()));
     }

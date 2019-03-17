@@ -45,6 +45,9 @@ public class TariffPage {
     @FindBy(xpath = "//clr-stack-label[@class='customers']")
     private List<WebElement> tariffs;
 
+    @FindBy(xpath = "//div[contains(@class, 'alert-item')]")
+    private WebElement tariffAlert;
+
     public TariffPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -105,5 +108,9 @@ public class TariffPage {
 
     public void clickOnOKButton() {
         buttonOK.click();
+    }
+
+    public String getMessageFromAlert() {
+        return tariffAlert.getText();
     }
 }

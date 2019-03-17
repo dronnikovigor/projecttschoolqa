@@ -85,6 +85,16 @@ public class StepEmployee {
         return tariffPage.tariffIsExists(name);
     }
 
+    @Step("Check that tariff message was showed")
+    public boolean tariffMessageWasShowed(String message) {
+        return message.equals(tariffPage.getMessageFromAlert().trim());
+    }
+
+    @Step("Check that tariff message was showed")
+    public boolean optionMessageWasShowed(String message) {
+        return message.equals(optionPage.getMessageFromAlert().trim());
+    }
+
     @Step("Check that option was created")
     public boolean optionHasCreated(String name) {
         return optionPage.optionIsExists(name);

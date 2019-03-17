@@ -20,6 +20,7 @@ public class OptionTest extends TestBase {
         stepEmployee.fillOption(option1);
         Assert.assertTrue(stepEmployee.addOptionButtonIsEnabled());
         stepEmployee.addOption();
+        Assert.assertTrue(stepEmployee.optionMessageWasShowed("Option have successfully added."));
         stepEmployee.clickOnOKButtonOption();
         Assert.assertTrue(stepEmployee.optionHasCreated(option1.getName()));
     }
