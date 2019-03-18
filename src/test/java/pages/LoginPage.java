@@ -1,6 +1,7 @@
 package pages;
 
 import common.Env;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -40,5 +41,8 @@ public class LoginPage {
 
     public void clickSignUpBtn() {
         signUpBtn.click();
+    }
+    public boolean checkInvalidDataError() {
+        return driver.findElement(By.cssSelector("#signUpLog > div > div")).getText().contains("Invalid user name or password");
     }
 }

@@ -37,6 +37,10 @@ public class StepLogin {
         loginPage.clickSignUpBtn();
     }
 
+    @Step("Check Invalid Data")
+    public boolean execCheckInvalidDataError() {
+        return loginPage.checkInvalidDataError();
+    }
 
     private String randomString(int len) {
         StringBuilder sb = new StringBuilder(len);

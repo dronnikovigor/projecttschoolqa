@@ -26,6 +26,19 @@ public class StepSignUp {
         signUpPage.fillInEmail(email);
     }
 
+    @Step("Click Username")
+    public void execClickUsername() {
+        signUpPage.clickUsername();
+    }
+    @Step("Click Password")
+    public void execClickPwd() {
+        signUpPage.clickPwd();
+    }
+    @Step("Click Email")
+    public void execClickEmail() {
+        signUpPage.clickEmail();
+    }
+
     @Step("Click on Next")
     public void execClickNext() {
         signUpPage.clickNextBtn();
@@ -51,6 +64,15 @@ public class StepSignUp {
     public void execFillInLastName(String lastName) {
         signUpPage.fillInLastName(lastName);
     }
+
+    @Step("Click Name")
+    public void execClickName() {
+        signUpPage.clickName();
+    }
+    @Step("Click Last Name")
+    public void execClickLastName() {
+        signUpPage.clickLastName();
+    }
     @Step("Fill in Email Input")
     public void execFillInEmailInput(String email) {
         signUpPage.fillInEmailInput(email);
@@ -63,9 +85,17 @@ public class StepSignUp {
     public void execFillInPassportNumber(String passportNumber) {
         signUpPage.fillInPassport(passportNumber);
     }
+    @Step("Click PassportNumber")
+    public void execClickPassportNumber() {
+        signUpPage.clickPassport();
+    }
     @Step("Fill in Passport From")
     public void execFillInPassportFrom(String passportFrom) {
         signUpPage.fillInPassportIssuedFrom(passportFrom);
+    }
+    @Step("Click Passport From")
+    public void execClickPassportFrom() {
+        signUpPage.clickPassportIssuedFrom();
     }
     @Step("Fill in Passport When")
     public void execFillInPassportWhen(String passportWhen) {
@@ -129,6 +159,11 @@ public class StepSignUp {
     @Step("Check User exists error")
     public boolean execCheckUserExistsError() {
         return signUpPage.checkUserExistsError();
+    }
+
+    @Step("Check Email for equals")
+    public boolean execCheckEmailEquals(String email) {
+        return signUpPage.checkEmailEquals(email);
     }
 
 }

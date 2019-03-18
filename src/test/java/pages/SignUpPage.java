@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class SignUpPage {
     private WebDriver driver;
 
@@ -57,6 +59,10 @@ public class SignUpPage {
     @FindBy(xpath = "/html/body[@class='no-scrolling']/app-root/div[@id='mainCont']/div/signup/div[@class='content-container']/div[@id='signUpPage']/clr-wizard[@class='clr-wizard wizard-lg lastPage']/clr-modal[@class='ng-tns-c2-0']/div[@class='modal ng-tns-c2-0']/div[@class='modal-dialog ng-trigger ng-trigger-fadeDown modal-lg']/div[@class='modal-outer-wrapper']/div[@class='modal-content-wrapper']/div[@class='modal-content']/div[@class='modal-footer clr-wizard-footer']/div[@class='clr-wizard-footer-buttons']/div[@class='clr-wizard-footer-buttons-wrapper']/clr-wizard-button[@class='clr-wizard-btn-wrapper'][4]/button[@class='btn clr-wizard-btn btn-primary clr-wizard-btn--primary btn-success']/span")
     private WebElement signUpBtn;
 
+
+    @FindBy(xpath = "//label[contains(@role, 'tooltip')]")
+    private List<WebElement> tooltips;
+
     public SignUpPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -79,11 +85,13 @@ public class SignUpPage {
     }
 
     public boolean checkEmailError() {
-        return !driver.findElements(By.cssSelector("label.tooltip.tooltip-validation.tooltip-md.tooltip-top-left.invalid")).isEmpty();
+        return tooltips.stream().anyMatch(webElement -> webElement.getAttribute("class").contains("invalid"));
+        //return !driver.findElements(By.cssSelector("label.tooltip.tooltip-validation.tooltip-md.tooltip-top-left.invalid")).isEmpty();
     }
     public boolean checkEmptyError() {
-        return !(driver.findElements(By.cssSelector("label.tooltip.tooltip-validation.tooltip-md.tooltip-top-left.invalid")).isEmpty() ||
-                driver.findElements(By.cssSelector("label.tooltip.tooltip-validation.tooltip-md.tooltip-bottom-right.invalid")).isEmpty());
+        return tooltips.stream().anyMatch(webElement -> webElement.getAttribute("class").contains("invalid"));
+        /*return !(driver.findElements(By.cssSelector("label.tooltip.tooltip-validation.tooltip-md.tooltip-top-left.invalid")).isEmpty() ||
+                driver.findElements(By.cssSelector("label.tooltip.tooltip-validation.tooltip-md.tooltip-bottom-right.invalid")).isEmpty());*/
     }
     public boolean checkUserExistsError() {
         return driver.findElement(By.cssSelector("#clr-wizard-page-2 > clr-alert > div > div > div")).getText().contains("Username or email is already taken.");
@@ -113,11 +121,27 @@ public class SignUpPage {
         this.password.sendKeys(pwd);
     }
 
+    public void clickUsername() {
+        this.username.click();
+    }
+    public void clickEmail() {
+        this.email.click();
+    }
+    public void clickPwd() {
+        this.password.click();
+    }
+
     public void fillInName(String name) {
         this.nameInput.sendKeys(name);
     }
     public void fillInLastName(String lastName) {
         this.lastNameInput.sendKeys(lastName);
+    }
+    public void clickName() {
+        this.nameInput.click();
+    }
+    public void clickLastName() {
+        this.lastNameInput.click();
     }
     public void fillInEmailInput(String email) {
         this.emailInput.clear();
@@ -129,8 +153,14 @@ public class SignUpPage {
     public void fillInPassport(String passport) {
         this.passportNumberInput.sendKeys(passport);
     }
+    public void clickPassport() {
+        this.passportNumberInput.click();
+    }
     public void fillInPassportIssuedFrom(String passportIssuedFrom) {
         this.passportIssuedFrom.sendKeys(passportIssuedFrom);
+    }
+    public void clickPassportIssuedFrom() {
+        this.passportIssuedFrom.click();
     }
     public void fillInPassportIssuedWhen(String passportIssuedWhen) {
         this.passportIssuedWhen.sendKeys(passportIssuedWhen);
@@ -154,5 +184,9 @@ public class SignUpPage {
 
     public void selectTariff(String tariff) {
         this.tariffSelect.sendKeys(tariff);
+    }
+
+    public boolean checkEmailEquals(String email) {
+        return this.emailInput.getText().equals(email);
     }
 }
